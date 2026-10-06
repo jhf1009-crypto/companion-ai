@@ -7,14 +7,14 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <iframe
-      src="/barbearia.html"
+      src="/barbearia.html?v=emerald-gold-2"
       title="Barbearia Exclusiva"
       style={{
         width: "100%",
         minHeight: "100vh",
         border: 0,
         display: "block",
-        background: "#0B0B0B",
+        background: "#070908",
       }}
     />
   );
