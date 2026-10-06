@@ -14,7 +14,7 @@ function Index() {
         minHeight: "100vh",
         border: 0,
         display: "block",
-        background: "#080808",
+        background: "#0B0B0B",
       }}
     />
   );
