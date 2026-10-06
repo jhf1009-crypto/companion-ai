@@ -140,7 +140,7 @@ footer{
 <section class="col" id="servicos"><div class="col-title"><span class="gold">✂</span> Escolha o serviço</div><div class="list" id="services"></div><div class="info">ⓘ <span>Todos os serviços incluem toalha quente e finalização.</span></div></section>
 <section class="col" id="barbeiros"><div class="col-title"><span class="gold">♙</span> Escolha o barbeiro</div><div class="list" id="barbers"></div></section>
 <section class="col"><div class="col-title"><span class="gold">▣</span> Escolha a data</div><div class="cal"><div class="cal-head"><span>‹</span><b>Maio 2025</b><span>›</span></div><div class="week"><span>DOM</span><span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span><span>SÁB</span></div><div class="days" id="days"></div></div><div class="time-title">Escolha o horário</div><div class="times" id="times"></div></section>
-<section class="col"><div class="col-title"><span class="gold">▤</span> Resumo do agendamento</div><div class="summary" id="summary"></div><button class="confirm" id="confirm">CONFIRMAR AGENDAMENTO</button><div class="safe">▣ Seus dados estão seguros conosco.</div></section>
+<section class="col"><div class="col-title"><span class="gold">▤</span> Resumo do agendamento</div><div class="summary" id="summary"></div><button class="confirm" id="confirm">CONFIRMAR AGENDAMENTO</button><div class="safe">Ao confirmar, o pedido será enviado pelo WhatsApp da barbearia.</div></section>
 </div></div></section>
 <section class="container benefits" id="galeria"><div class="benefit"><div class="ico">◷</div><div><b>Agendamento rápido</b><span>Marque seu horário em poucos cliques.</span></div></div><div class="benefit"><div class="ico">✪</div><div><b>Profissionais qualificados</b><span>Barbeiros experientes para um resultado impecável.</span></div></div><div class="benefit"><div class="ico">♜</div><div><b>Ambiente premium</b><span>Conforto e qualidade que você merece.</span></div></div><div class="benefit"><div class="ico">▭</div><div><b>Pagamento facilitado</b><span>Diversas formas de pagamento para sua comodidade.</span></div></div></section>
 </main>
@@ -156,6 +156,13 @@ function renderDays(){const seq=[27,28,29,30,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
 function renderTimes(){document.querySelector('#times').innerHTML=times.map(t=>'<button class="time '+(state.t===t?'sel':'')+'" data-t="'+t+'">'+t+'</button>').join('');document.querySelectorAll('#times button').forEach(b=>b.onclick=()=>{state.t=b.dataset.t;render()})}
 function renderSummary(){const s=services[state.s],b=barbers[state.b];document.querySelector('#summary').innerHTML='<div class="row"><label>Serviço</label><div class="line"><b>'+s[0]+'</b><span>'+money(s[1])+'</span></div></div><hr><div class="row"><label>Barbeiro</label><div class="line"><b>'+b[0]+'</b></div></div><div class="row"><label>Data</label><div class="line"><b>'+state.d+' de Maio de 2025</b></div></div><div class="row"><label>Horário</label><div class="line"><b>'+state.t+'</b></div></div><div class="row"><label>Duração</label><div class="line"><b>'+s[2]+' min</b></div></div><hr><div class="total"><span>Total</span><b>'+money(s[1])+'</b></div>'}
 function render(){renderServices();renderBarbers();renderDays();renderTimes();renderSummary()}render();
-document.querySelector('#confirm').onclick=()=>{const s=services[state.s],b=barbers[state.b];document.querySelector('#modalText').textContent=s[0]+' com '+b[0]+', dia '+state.d+' de maio de 2025 às '+state.t+'. Total: '+money(s[1])+'.';document.querySelector('#modal').classList.add('open')};document.querySelector('#close').onclick=()=>document.querySelector('#modal').classList.remove('open');document.querySelector('#modal').onclick=e=>{if(e.target.id==='modal')e.currentTarget.classList.remove('open')};
+document.querySelector('#confirm').onclick=()=>{const s=services[state.s],b=barbers[state.b];const message='Olá! Quero confirmar meu agendamento na Barbearia Exclusiva.%0A%0A'+
+'✂️ Serviço: '+encodeURIComponent(s[0])+'%0A'+
+'👤 Barbeiro: '+encodeURIComponent(b[0])+'%0A'+
+'📅 Data: '+encodeURIComponent(state.d+' de Maio de 2025')+'%0A'+
+'🕒 Horário: '+encodeURIComponent(state.t)+'%0A'+
+'⏱️ Duração: '+encodeURIComponent(s[2]+' min')+'%0A'+
+'💰 Total: '+encodeURIComponent(money(s[1]))+'%0A%0A'+
+'Por favor, confirme a disponibilidade deste horário.';window.open('https://wa.me/5562999577706?text='+message,'_blank','noopener,noreferrer');};document.querySelector('#close').onclick=()=>document.querySelector('#modal').classList.remove('open');document.querySelector('#modal').onclick=e=>{if(e.target.id==='modal')e.currentTarget.classList.remove('open')};
 </script>
 </body></html>
