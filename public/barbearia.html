@@ -103,9 +103,35 @@ footer{
 .heart{color:#D6B45A}
 </style>
 
+
+<style id="whatsapp-cta-style">
+.whatsapp-cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 20px;
+  border-radius:7px;
+  background:#25D366;
+  border:1px solid #25D366;
+  color:#08130C;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.03em;
+  transition:.2s;
+}
+.whatsapp-cta:hover{
+  background:#38E678;
+  border-color:#38E678;
+  transform:translateY(-1px);
+}
+@media(max-width:760px){
+  .whatsapp-cta{padding:10px 13px;font-size:11px}
+}
+</style>
+
 </head>
 <body>
-<header><div class="head"><a href="#inicio" class="brand"><span class="mark">✂</span><span><small>BARBEARIA</small><strong>EXCLUSIVA</strong></span></a><nav class="nav"><a href="#inicio">INÍCIO</a><a href="#servicos">SERVIÇOS</a><a href="#barbeiros">BARBEIROS</a><a href="#galeria">GALERIA</a><a href="#contato">CONTATO</a></nav><a class="outline" href="#agendar">AGENDAR ◫</a></div></header>
+<header><div class="head"><a href="#inicio" class="brand"><span class="mark">✂</span><span><small>BARBEARIA</small><strong>EXCLUSIVA</strong></span></a><nav class="nav"><a href="#inicio">INÍCIO</a><a href="#servicos">SERVIÇOS</a><a href="#barbeiros">BARBEIROS</a><a href="#galeria">GALERIA</a><a href="#contato">CONTATO</a></nav><div style="display:flex;gap:10px;justify-self:end;align-items:center"><a class="outline" href="#agendar">AGENDAR ◫</a><a class="whatsapp-cta" href="https://wa.me/5562999577706" target="_blank" rel="noopener noreferrer">WHATSAPP</a></div></div></header>
 <section class="hero" id="inicio"><div class="hero-bg"></div><div class="container hero-in"><div class="hero-copy"><div class="eyebrow">ESTILO • CONFIANÇA • ATITUDE</div><h1>Seu estilo,<span>nossa paixão.</span></h1><p>Agende seu horário e viva a melhor experiência de barbearia.</p><a href="#agendar" class="primary">AGENDAR AGORA ◫</a></div></div></section>
 <main>
 <section class="container booking" id="agendar"><div class="card"><div class="booking-head"><h2>Agende seu horário</h2><div class="hours"><span class="gold">◷</span><div><small>ATENDIMENTO</small><b>SEG - SÁB: 09h às 20h</b></div></div></div>
