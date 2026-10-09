@@ -1650,10 +1650,18 @@ select:focus {
   height: 36px;
   object-fit: contain;
 }
+.logo-image {
+  width: 78px;
+  height: 48px;
+}
 @media (max-width: 600px) {
   .brand-symbol {
     width: 28px;
     height: 28px;
+  }
+  .logo-image {
+    width: 62px;
+    height: 42px;
   }
 }
 /* Keep demonstration controls touchable and avoid iOS input zoom. */

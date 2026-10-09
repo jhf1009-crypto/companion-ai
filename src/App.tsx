@@ -56,9 +56,9 @@ export function App() {
       <header className="site-header">
         <a className="brand" href="#/" aria-label={`${config.name} — início`}>
           <img
-            className="brand-symbol"
-            src={`${import.meta.env.BASE_URL}images/scissors.svg`}
-            alt=""
+            className="brand-symbol logo-image"
+            src={`${import.meta.env.BASE_URL}images/image.png`}
+            alt="Logo Barbearia do Enzo"
           />
           <span>
             <small>BARBEARIA</small>
@@ -92,9 +92,9 @@ export function App() {
         <div className="container">
           <a className="brand" href="#/">
             <img
-              className="brand-symbol"
-              src={`${import.meta.env.BASE_URL}images/scissors.svg`}
-              alt=""
+              className="brand-symbol logo-image"
+              src={`${import.meta.env.BASE_URL}images/image.png`}
+              alt="Logo Barbearia do Enzo"
             />
             <span>
               <small>BARBEARIA</small>

@@ -9,7 +9,7 @@ export function Home() {
       <section className="hero">
         <img
           className="hero-art"
-          src={`${import.meta.env.BASE_URL}images/image.png`}
+          src={`${import.meta.env.BASE_URL}images/hero-photo.png`}
           alt="Ilustração de uma cadeira de barbeiro sob luzes douradas"
         />
         <div className="hero-shade" />
