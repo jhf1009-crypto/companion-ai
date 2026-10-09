@@ -37,10 +37,6 @@ export function Home() {
               Falar no WhatsApp
             </a>
           </div>
-          <div className="hero-detail">
-            <span className="line" /> Precisão no corte. Respeito pelo seu
-            tempo.
-          </div>
         </div>
         <span className="hero-caption">O SEU PRÓXIMO CAPÍTULO COMEÇA AQUI</span>
       </section>
@@ -65,11 +61,6 @@ export function Home() {
               <em>Único no resultado.</em>
             </h2>
           </div>
-          <p>
-            Escolha o seu ritual.
-            <br />
-            Nós cuidamos do resto.
-          </p>
         </div>
         <div className="service-grid">
           {data.services
@@ -108,7 +99,6 @@ export function Home() {
             loading="lazy"
           />
           <div>
-            <span className="eyebrow">QUEM CUIDA DE VOCÊ</span>
             <h2>
               Bom papo.
               <br />
@@ -127,7 +117,6 @@ export function Home() {
       <section className="section container" id="localizacao">
         <div className="section-heading">
           <div>
-            <span className="eyebrow">A CASA É SUA</span>
             <h2>
               Nos encontramos <em>aqui.</em>
             </h2>
