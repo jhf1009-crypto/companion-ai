@@ -1,4 +1,4 @@
-# Barbearia Exclusiva — demonstração de agendamento
+# Barbearia do Enzo — demonstração de agendamento
 
 Site mobile primeiro para uma barbearia pequena: o cliente reserva sozinho e o profissional acompanha a agenda, inclusive em outra aba. Interface escura com dourado, fontes do sistema, ilustrações SVG locais, React 18, TypeScript, Vite e CSS puro. Sem backend, banco, variáveis de ambiente ou carregamento de fontes/imagens externas.
 
@@ -12,10 +12,10 @@ A publicação existente está ligada ao Lovable. Não foram encontrados workflo
 
 ### Dados reaproveitados e fictícios
 
-- Reaproveitados do HTML anterior: **Barbearia Exclusiva**, slogan **“Seu estilo, nossa paixão.”**, texto de apresentação, WhatsApp **55 62 99957-7706**, serviços/preços/durações: corte R$50/30min, barba R$40/30min, combo R$80/60min, sobrancelha R$20/15min, completo R$100/75min. Expediente seg–sáb 09h–20h, domingo fechado.
-- O repositório não comprova que esses dados pertencem a uma empresa real; foram preservados como os dados mais específicos disponíveis. O WhatsApp não foi acionado nem validado externamente.
+- Nome atualizado a pedido do usuário para **Barbearia do Enzo**. Foram mantidos o slogan **“Seu estilo, nossa paixão.”**, texto de apresentação, WhatsApp **55 62 99957-7706**, serviços/preços/durações: corte R$50/30min, barba R$40/30min, combo R$80/60min, sobrancelha R$20/15min, completo R$100/75min. Expediente seg–sáb 09h–20h, domingo fechado.
+- O repositório não comprova que esses dados pertencem a uma empresa real; foram preservados como os dados mais específicos disponíveis. O WhatsApp não foi acionado nem validado externamente. O logo/foto solicitado ainda precisa ser anexado novamente para ser incorporado como asset local.
 - Endereço **Rua das Estrelas, 123, São Paulo–SP** e nome **Rafael Lima** vieram do site anterior, mas aparentam ser demonstrativos: não devem ser apresentados como verificados. Foi escolhido um único profissional, com estrutura preparada para vários em `config.barbers`.
-- Instagram `@barbeariaexclusiva`, corte infantil R$35/30min, clientes, telefones de seed e ilustrações são fictícios. Os telefones de seed são deliberadamente não utilizáveis como números reais. Almoço seg–sex 12h–13h, grade 30min, antecedência 1h e janela de 30 dias foram adotados conforme o pedido.
+- Instagram `@barbeariadoenzo`, corte infantil R$35/30min, clientes, telefones de seed e ilustrações são fictícios. Os telefones de seed são deliberadamente não utilizáveis como números reais. Almoço recorrente seg–sex **11:30–13:30**, grade 30min, antecedência 1h e janela de 30 dias.
 - Não havia fotos próprias ou logo local utilizáveis. As fotos eram hotlinks Unsplash: foram removidas, substituídas por SVGs locais desenhados para a demonstração. Não há imagens a otimizar herdadas.
 
 ## Rodar e testar

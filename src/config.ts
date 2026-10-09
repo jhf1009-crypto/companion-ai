@@ -1,13 +1,13 @@
 import type { Service, Hours } from "./types";
 export const config = {
-  name: "Barbearia Exclusiva",
+  name: "Barbearia do Enzo",
   slogan: "Seu estilo, nossa paixão.",
   description:
     "Mais que um corte, uma experiência. Estilo, atitude e qualidade em cada detalhe.",
   address: "Rua das Estrelas, 123",
   city: "São Paulo – SP",
   whatsapp: "5562999577706",
-  instagram: "barbeariaexclusiva",
+  instagram: "barbeariadoenzo",
   timezone: "America/Bahia",
   pin: "1234",
   step: 30,
@@ -20,7 +20,7 @@ export const config = {
     text: "#f5f1e8",
   },
   barbers: [{ id: "rafael", name: "Rafael Lima", image: "images/barber.svg" }],
-  lunch: { enabled: true, start: 720, end: 780, weekdays: [1, 2, 3, 4, 5] },
+  lunch: { enabled: true, start: 690, end: 810, weekdays: [1, 2, 3, 4, 5] },
 };
 export const initialHours: Hours[] = Array.from({ length: 7 }, (_, day) => ({
   open: 540,

@@ -13,7 +13,7 @@ export function calendar(a: Appointment): void {
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Barbearia Exclusiva//Agenda Demo//PT",
+    "PRODID:-//Barbearia do Enzo//Agenda Demo//PT",
     "BEGIN:VTIMEZONE",
     "TZID:America/Bahia",
     "BEGIN:STANDARD",

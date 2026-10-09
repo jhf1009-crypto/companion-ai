@@ -55,7 +55,7 @@ describe("Disponibilidade da agenda", () => {
   it("duração longa não cruza almoço nem fechamento", () => {
     const d = data();
     expect(isAvailable(d, now.date, 690, 60, barber, now)).toBe(false);
-    expect(isAvailable(d, now.date, 660, 60, barber, now)).toBe(true);
+    expect(isAvailable(d, now.date, 600, 60, barber, now)).toBe(true);
     expect(isAvailable(d, date, 1170, 60, barber, now)).toBe(false);
     expect(isAvailable(d, date, 1140, 60, barber, now)).toBe(true);
   });
