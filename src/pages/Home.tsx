@@ -81,12 +81,9 @@ export function Home() {
                 <h3>{s.name}</h3>
                 <p>{s.description}</p>
                 <div className="service-meta">
-                  <div className="service-prices" aria-label={`Preços por barbeiro para ${s.name}`}><div><span>Luiz</span><strong>{money(servicePrice(s, "luiz"))}</strong></div><div><span>Enzo</span><strong>{money(servicePrice(s, "enzo"))}</strong></div></div>
+                  <div className="service-prices" aria-label={`Escolha o barbeiro para ${s.name}`}><a className="service-price-card" href={`#/agendar?servico=${s.id}&barbeiro=luiz`}><span>Luiz</span><strong>{money(servicePrice(s, "luiz"))}</strong><small>Escolher ↗</small></a><a className="service-price-card" href={`#/agendar?servico=${s.id}&barbeiro=enzo`}><span>Enzo</span><strong>{money(servicePrice(s, "enzo"))}</strong><small>Escolher ↗</small></a></div>
                   <span>{s.duration} min</span>
                 </div>
-                <a className="service-link" href={`#/agendar?servico=${s.id}`}>
-                  Agendar <span aria-hidden="true">↗</span>
-                </a>
               </article>
             ))}
         </div>
