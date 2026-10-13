@@ -1,4 +1,4 @@
-import { config, initialHours, initialServices } from "../config";
+import { config, initialHours, initialServices, servicePrice } from "../config";
 import { addDays, nowClock } from "./dates";
 import { availableSlots } from "./availability";
 import type { Data } from "../types";
@@ -50,7 +50,7 @@ export function seed(): Data {
         date,
         start,
         duration: service.duration,
-        price: service.price,
+        price: servicePrice(service, config.barbers[0].id),
         name: names[i],
         phone: `7700000${String(i).padStart(4, "0")}`,
         status:
