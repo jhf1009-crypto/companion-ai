@@ -3,6 +3,7 @@ export type Service = {
   name: string;
   description: string;
   price: number;
+  priceByBarber?: Record<string, number>;
   duration: number;
   active: boolean;
   featured?: boolean;
