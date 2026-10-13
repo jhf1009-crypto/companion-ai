@@ -1,4 +1,4 @@
-import { config } from "../config";
+import { config, servicePrice } from "../config";
 import { money, time } from "../lib/dates";
 import { whatsapp } from "../lib/whatsapp";
 import { useStore } from "../state/store";
@@ -81,7 +81,7 @@ export function Home() {
                 <h3>{s.name}</h3>
                 <p>{s.description}</p>
                 <div className="service-meta">
-                  <strong>{money(s.price)}</strong>
+                  <strong>{money(servicePrice(s, config.barbers[0].id))}–{money(servicePrice(s, config.barbers[1].id))}</strong>
                   <span>{s.duration} min</span>
                 </div>
                 <a className="service-link" href={`#/agendar?servico=${s.id}`}>
@@ -105,8 +105,7 @@ export function Home() {
               <em>Corte impecável.</em>
             </h2>
             <p>
-              {config.description} Conheça {config.barbers[0].name}, seu
-              profissional nesta demonstração.
+              {config.description} Conheça Luiz e Enzo, nossos barbeiros. Cada profissional tem sua própria tabela de preços.
             </p>
             <a className="button outline" href="#/agendar">
               Reservar meu horário ↗
