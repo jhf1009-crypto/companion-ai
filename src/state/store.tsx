@@ -18,6 +18,7 @@ import {
 import { seed } from "../lib/seed";
 import { isAvailable } from "../lib/availability";
 import { nowClock } from "../lib/dates";
+import { servicePrice } from "../config";
 import { validPhone } from "../lib/whatsapp";
 const Context = createContext<Store | null>(null);
 type Store = {
@@ -128,7 +129,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
           {
             ...a,
             serviceName: service.name,
-            price: service.price,
+            price: servicePrice(service, a.barberId),
             duration: service.duration,
           },
         ],
