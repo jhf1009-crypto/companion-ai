@@ -415,7 +415,7 @@ small {
   gap: 10px;
   margin-top: auto;
 }
-.service-prices > div {
+.service-price-card {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -424,17 +424,27 @@ small {
   background: #ffffff05;
   border-radius: 3px;
 }
-.service-prices span {
+.service-price-card span {
   color: var(--muted);
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
-.service-prices strong {
+.service-price-card strong {
   color: var(--accent);
   font-size: 19px;
   font-weight: 500;
+}
+.service-price-card small {
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 2px;
+}
+.service-price-card:hover {
+  border-color: var(--accent);
+  background: #c6a15b12;
+  transform: translateY(-2px);
 }
 .service-meta > span {
   color: #aaa69f;
