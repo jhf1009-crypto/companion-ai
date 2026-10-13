@@ -1,10 +1,10 @@
 :root {
-  --background: #0e0e10;
-  --surface: #18181b;
-  --accent: #c9a45c;
-  --text: #f5f1e8;
-  --muted: #b5b1a9;
-  --border: #ffffff18;
+  --background: #0b0b0b;
+  --surface: #161616;
+  --accent: #c6a15b;
+  --text: #f5f5f2;
+  --muted: #a6a6a0;
+  --border: #ffffff1f;
   --serif: Georgia, "Times New Roman", serif;
   font-family:
     system-ui,
@@ -141,12 +141,12 @@ small {
   background: #e0bf7b;
 }
 .outline {
-  border-color: #c9a45c65;
+  border-color: #c6a15b65;
   background: transparent;
   color: var(--accent);
 }
 .outline:hover {
-  background: #c9a45c12;
+  background: #c6a15b12;
   border-color: var(--accent);
 }
 .ghost {
@@ -168,8 +168,8 @@ small {
 }
 .demo-bar {
   min-height: 42px;
-  background: #c9a45c0d;
-  border-bottom: 1px solid #c9a45c25;
+  background: #c6a15b0d;
+  border-bottom: 1px solid #c6a15b25;
   padding: 6px 28px;
   display: flex;
   justify-content: space-between;
@@ -211,7 +211,7 @@ small {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--border);
-  background: #0e0e10;
+  background: #0b0b0b;
 }
 .brand {
   display: flex;
@@ -248,7 +248,7 @@ small {
   color: var(--accent);
 }
 .header-admin {
-  border: 1px solid #c9a45c40;
+  border: 1px solid #c6a15b40;
   padding: 0 18px;
   border-radius: 4px;
 }
@@ -272,8 +272,8 @@ small {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, #0e0e10 0%, #0e0e10db 30%, #0e0e1040 70%, #0e0e100d),
-    linear-gradient(0deg, #0e0e10, transparent 30%);
+    linear-gradient(90deg, #0b0b0b 0%, #0b0b0bdb 30%, #0b0b0b40 70%, #0b0b0b0d),
+    linear-gradient(0deg, #0b0b0b, transparent 30%);
 }
 .hero-content {
   position: relative;
@@ -371,11 +371,11 @@ small {
     transform 0.2s;
 }
 .service-card:hover {
-  border-color: #c9a45c55;
+  border-color: #c6a15b55;
   transform: translateY(-3px);
 }
 .service-card.featured {
-  border-color: #c9a45c80;
+  border-color: #c6a15b80;
   background: linear-gradient(135deg, #252218, #161617);
 }
 .service-card img {
@@ -398,7 +398,7 @@ small {
   top: 20px;
   font-size: 9px;
   letter-spacing: 0.12em;
-  background: #c9a45c20;
+  background: #c6a15b20;
   padding: 6px 9px;
   color: var(--accent);
   border-radius: 2px;
@@ -455,7 +455,7 @@ small {
 }
 .map-art {
   min-height: 390px;
-  border: 1px solid #c9a45c30;
+  border: 1px solid #c6a15b30;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -465,15 +465,15 @@ small {
     linear-gradient(
       35deg,
       transparent 46%,
-      #c9a45c14 46%,
-      #c9a45c14 49%,
+      #c6a15b14 46%,
+      #c6a15b14 49%,
       transparent 49%
     ),
     linear-gradient(
       105deg,
       transparent 38%,
-      #c9a45c0d 38%,
-      #c9a45c0d 42%,
+      #c6a15b0d 38%,
+      #c6a15b0d 42%,
       transparent 42%
     ),
     repeating-linear-gradient(0deg, transparent 0 63px, #ffffff04 64px 65px),
@@ -492,8 +492,8 @@ small {
   font-size: 36px;
   border-radius: 50%;
   box-shadow:
-    0 0 0 12px #c9a45c15,
-    0 0 0 25px #c9a45c07;
+    0 0 0 12px #c6a15b15,
+    0 0 0 25px #c6a15b07;
 }
 .map-art strong {
   font-family: var(--serif);
@@ -717,7 +717,7 @@ small {
 }
 .selected {
   border-color: var(--accent) !important;
-  background: #c9a45c20 !important;
+  background: #c6a15b20 !important;
   color: var(--accent) !important;
 }
 .day-strip {
@@ -765,7 +765,7 @@ small {
 }
 .time-grid button:hover {
   border-color: var(--accent);
-  background: #c9a45c15;
+  background: #c6a15b15;
 }
 .muted,
 .hint {
@@ -775,9 +775,9 @@ small {
   font-size: 12px;
 }
 .booking-summary {
-  background: #c9a45c0a;
+  background: #c6a15b0a;
   padding: 20px;
-  border: 1px solid #c9a45c20;
+  border: 1px solid #c6a15b20;
   margin-bottom: 24px;
   border-radius: 4px;
 }
@@ -914,7 +914,7 @@ select:focus {
 }
 .segmented {
   display: flex;
-  background: #18181b;
+  background: #161616;
   border-radius: 4px;
 }
 .date-navigation {
@@ -985,7 +985,7 @@ select:focus {
 .appointment.new {
   border-color: var(--accent);
   box-shadow: inset 4px 0 var(--accent);
-  background: #c9a45c12;
+  background: #c6a15b12;
 }
 .appointment.cancelled {
   opacity: 0.65;
@@ -1026,7 +1026,7 @@ select:focus {
   padding: 4px 8px;
   font-size: 10px;
   border-radius: 3px;
-  background: #c9a45c17;
+  background: #c6a15b17;
   color: var(--accent);
   margin-top: 8px;
 }
@@ -1077,8 +1077,8 @@ select:focus {
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  background: #c9a45c18;
-  border: 1px solid #c9a45c50;
+  background: #c6a15b18;
+  border: 1px solid #c6a15b50;
   padding: 15px;
   font-size: 13px;
 }
@@ -1205,7 +1205,7 @@ select:focus {
   padding: 20px;
 }
 .reset-dialog {
-  background: #18181b;
+  background: #161616;
   border: 1px solid var(--accent);
   padding: 30px;
   border-radius: 6px;
@@ -1313,8 +1313,8 @@ select:focus {
   }
   .hero-shade {
     background:
-      linear-gradient(90deg, #0e0e10e8, #0e0e1050),
-      linear-gradient(0deg, #0e0e10, transparent 70%);
+      linear-gradient(90deg, #0b0b0be8, #0b0b0b50),
+      linear-gradient(0deg, #0b0b0b, transparent 70%);
   }
   .hero .eyebrow {
     font-size: 9px;
@@ -1406,7 +1406,7 @@ select:focus {
     left: 0;
     right: 0;
     padding: 12px 18px calc(12px + env(safe-area-inset-bottom));
-    background: #0e0e10eb;
+    background: #0b0b0beb;
     border-top: 1px solid var(--border);
     z-index: 30;
     backdrop-filter: blur(10px);
