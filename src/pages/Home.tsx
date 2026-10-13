@@ -81,7 +81,7 @@ export function Home() {
                 <h3>{s.name}</h3>
                 <p>{s.description}</p>
                 <div className="service-meta">
-                  <strong>{money(servicePrice(s, config.barbers[0].id))}–{money(servicePrice(s, config.barbers[1].id))}</strong>
+                  <strong>Luiz {money(servicePrice(s, "luiz"))} · Enzo {money(servicePrice(s, "enzo"))}</strong>
                   <span>{s.duration} min</span>
                 </div>
                 <a className="service-link" href={`#/agendar?servico=${s.id}`}>
