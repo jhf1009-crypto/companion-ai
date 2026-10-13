@@ -88,28 +88,6 @@ export function Home() {
             ))}
         </div>
       </section>
-      <section className="craft">
-        <div className="container craft-inner">
-          <img
-            src={`${import.meta.env.BASE_URL}${config.barbers[0].image}`}
-            alt="Ilustração do profissional Rafael"
-            loading="lazy"
-          />
-          <div>
-            <h2>
-              Bom papo.
-              <br />
-              <em>Corte impecável.</em>
-            </h2>
-            <p>
-              {config.description} Conheça Luiz e Enzo, nossos barbeiros. Cada profissional tem sua própria tabela de preços.
-            </p>
-            <a className="button outline" href="#/agendar">
-              Reservar meu horário ↗
-            </a>
-          </div>
-        </div>
-      </section>
       <section className="section container" id="localizacao">
         <div className="section-heading">
           <div>
