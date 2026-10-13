@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { config } from "../config";
+import { config, servicePrice } from "../config";
 import { addDays, dateLabel, money, nowClock, time } from "../lib/dates";
 import { availableSlots } from "../lib/availability";
 import { maskPhone, validPhone, whatsapp } from "../lib/whatsapp";
@@ -82,7 +82,7 @@ export function Booking({
       date,
       start,
       duration: service.duration,
-      price: service.price,
+      price: servicePrice(service, barberId),
       name: name.trim(),
       phone: phone.replace(/\D/g, ""),
       status: "confirmed",
@@ -208,7 +208,7 @@ export function Booking({
       {service && step > 0 && (
         <div className="selection-summary">
           <span>
-            {service.name} · {service.duration} min · {money(service.price)}
+            {service.name} · {service.duration} min · {money(servicePrice(service, barberId))}
           </span>
           <button onClick={() => setStep(0)}>Alterar serviço</button>
         </div>
