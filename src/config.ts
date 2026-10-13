@@ -10,7 +10,7 @@ export const config = {
     "Mais que um corte, uma experiência. Estilo, atitude e qualidade em cada detalhe.",
   address: "Rua das Estrelas, 123",
   city: "São Paulo – SP",
-  whatsapp: "5562999577706",
+  whatsapp: "5562998159719",
   instagram: "barbeariadoenzo",
   timezone: "America/Bahia",
   pin: "1234",
