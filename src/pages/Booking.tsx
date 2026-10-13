@@ -22,8 +22,9 @@ export function Booking({
     new URLSearchParams(location.hash.split("?")[1]).get("servico") ??
     "";
   const [serviceId, setServiceId] = useState(preselected);
+  const preselectedBarber = new URLSearchParams(location.hash.split("?")[1]).get("barbeiro");
   const [barberId, setBarberId] = useState(
-    existing?.barberId ?? config.barbers[0].id,
+    existing?.barberId ?? preselectedBarber ?? config.barbers[0].id,
   );
   const [step, setStep] = useState(preselected ? 1 : 0);
   const [date, setDate] = useState(existing?.date ?? "");
