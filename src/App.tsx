@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Home } from "./pages/Home";
 import { Booking } from "./pages/Booking";
+import { Admin } from "./pages/Admin";
 import { useStore } from "./state/store";
 import { config } from "./config";
 export function App() {
@@ -65,7 +66,7 @@ export function App() {
           Não feche a página.
         </p>
       )}
-      {path === "#/agendar" ? <Booking key={route} /> : <Home />}
+      {path === "#/gestao" ? <Admin /> : path === "#/agendar" ? <Booking key={route} /> : <Home />}
       <footer className="site-footer">
         <div className="container">
           <a className="brand" href="#/">
