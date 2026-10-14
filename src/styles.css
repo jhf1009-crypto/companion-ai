@@ -362,8 +362,8 @@ small {
   position: relative;
   padding: 32px 28px;
   border: 1px solid var(--border);
-  background: #171717;
-  color: #f5f5f2;
+  background: #f5f5f2;
+  color: #111111;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -377,7 +377,7 @@ small {
 }
 .service-card.featured {
   border-color: var(--accent);
-  background: #1d1d1d;
+  background: #ffffff;
 }
 .service-card img {
   margin-bottom: 28px;
@@ -390,7 +390,7 @@ small {
   font-size: 25px;
 }
 .service-card p {
-  color: #a6a6a0;
+  color: #5f5f5a;
   font-size: 13px;
   min-height: 66px;
 }
@@ -423,12 +423,12 @@ small {
   gap: 4px;
   padding: 10px 12px;
   border: 1px solid #ffffff16;
-  background: #202020;
-  border-color: #ffffff1f;
+  background: #ecece8;
+  border-color: #1111111f;
   border-radius: 3px;
 }
 .service-price-card span {
-  color: #a6a6a0;
+  color: #666660;
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -446,7 +446,7 @@ small {
 }
 .service-price-card:hover {
   border-color: var(--accent);
-  background: #29251d;
+  background: #ffffff;
   transform: translateY(-2px);
 }
 .service-meta > span {
