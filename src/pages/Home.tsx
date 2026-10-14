@@ -11,7 +11,7 @@ export function Home() {
         <img
           className="hero-art"
           src={`${import.meta.env.BASE_URL}images/hero-photo.webp`}
-          fetchPriority="high"
+          {...{ fetchpriority: "high" }}
           decoding="async"
           alt="Ilustração de uma cadeira de barbeiro sob luzes douradas"
         />
@@ -188,3 +188,4 @@ export function Home() {
     </>
   );
 }
+
