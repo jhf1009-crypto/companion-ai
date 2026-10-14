@@ -1,5 +1,22 @@
 # Barbearia do Enzo — demonstração de agendamento
 
+## Edição individual de serviços
+
+Em `#/gestao`, abra **Serviços** e selecione **Luiz** ou **Enzo**. Nome,
+preço, duração e disponibilidade são salvos separadamente por profissional.
+Os horários disponíveis e as novas reservas usam os dados do barbeiro escolhido;
+reservas existentes conservam o nome, o valor e a duração originais.
+
+`Service.barberSettings[barberId]` contém as configurações individuais.
+`serviceForBarber` centraliza a leitura no painel, nos cards, na seleção do
+serviço e na confirmação. Dados antigos com somente `priceByBarber` continuam
+funcionando sem trocar a chave de armazenamento ou apagar as reservas salvas.
+
+O armazenamento continua local ao navegador (`barbearia-demo-v2`), com
+sincronização entre abas da mesma origem. Editar aqui **não publica** uma tabela
+compartilhada com outros aparelhos; isso exige implementar persistência em um
+backend e autenticação real, que ainda não fazem parte desta versão.
+
 Site mobile primeiro para uma barbearia pequena: o cliente reserva sozinho e o profissional acompanha a agenda, inclusive em outra aba. Interface escura com dourado, fontes do sistema, ilustrações SVG locais, React 18, TypeScript, Vite e CSS puro. Sem backend, banco, variáveis de ambiente ou carregamento de fontes/imagens externas.
 
 ## Diagnóstico, preservação e decisões

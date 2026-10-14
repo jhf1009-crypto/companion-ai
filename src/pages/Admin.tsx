@@ -13,7 +13,8 @@ import { overlaps } from "../lib/availability";
 import { whatsapp } from "../lib/whatsapp";
 import { useStore } from "../state/store";
 import { Booking } from "./Booking";
-import type { Appointment, Service } from "../types";
+import { serviceForBarber, updateBarberService } from "../lib/services";
+import type { Appointment, Service, ServiceSettings } from "../types";
 const statuses = {
   confirmed: "Confirmado",
   completed: "Concluído",
@@ -39,6 +40,7 @@ export function Admin() {
   const [blockEnd, setBlockEnd] = useState("16:00");
   const [allDay, setAllDay] = useState(false);
   const [blockBarber, setBlockBarber] = useState(config.barbers[0].id);
+  const [serviceBarber, setServiceBarber] = useState(config.barbers[0].id);
   useEffect(() => {
     if (logged && sound && newIds.length > seen.current && audio.current) {
       try {
@@ -502,13 +504,32 @@ export function Admin() {
       )}
       {tab === "services" && (
         <section className="admin-panel">
-          <h2>Seu menu de cuidados.</h2>
+          <h2>Serviços por barbeiro.</h2>
+          <p className="muted">
+            Escolha o barbeiro para editar seu nome de serviço, preço e duração.
+            Salvar uma alteração não modifica a tabela do outro profissional.
+          </p>
+          <div className="barber-picker" role="group" aria-label="Barbeiro para editar serviços">
+            {config.barbers.map((barber) => (
+              <button
+                type="button"
+                key={barber.id}
+                className={`barber-option ${serviceBarber === barber.id ? "selected" : ""}`}
+                aria-pressed={serviceBarber === barber.id}
+                onClick={() => setServiceBarber(barber.id)}
+              >
+                <span>{barber.name}</span>
+                <small>{serviceBarber === barber.id ? "Editando" : "Editar tabela"}</small>
+              </button>
+            ))}
+          </div>
+          <h3>Tabela de {config.barbers.find((b) => b.id === serviceBarber)?.name}</h3>
           <p className="muted">
             Alterações valem para as próximas reservas; agendamentos existentes
             mantêm o valor e a duração reservados.
           </p>
           {data.services.map((service) => (
-            <ServiceEditor key={service.id} service={service} />
+            <ServiceEditor key={service.id} service={service} barberId={serviceBarber} />
           ))}
           <button
             className="button primary"
@@ -548,13 +569,23 @@ export function Admin() {
     </main>
   );
 }
-function ServiceEditor({ service }: { service: Service }) {
+function ServiceEditor({ service, barberId }: { service: Service; barberId: string }) {
   const { update, toast } = useStore();
-  const [draft, setDraft] = useState(service);
-  useEffect(() => setDraft(service), [service]);
+  const [drafts, setDrafts] = useState<Record<string, ServiceSettings>>({});
+  const [error, setError] = useState("");
+  const barberName = config.barbers.find((barber) => barber.id === barberId)?.name;
+  const draft = drafts[barberId] ?? serviceForBarber(service, barberId);
+  const setDraft = (next: ServiceSettings) => {
+    setDrafts((current) => ({ ...current, [barberId]: {
+      name: next.name, price: next.price, duration: next.duration, active: next.active,
+    } }));
+    setError("");
+  };
+  useEffect(() => setError(""), [barberId]);
   return (
     <form
       className="service-editor"
+      aria-label={`Editar ${service.name} de ${barberName}`}
       onSubmit={(e) => {
         e.preventDefault();
         if (
@@ -565,20 +596,29 @@ function ServiceEditor({ service }: { service: Service }) {
           draft.duration < 5 ||
           draft.duration > 600
         ) {
-          toast("Informe nome, preço válido e duração de 5 a 600 minutos.");
+          setError("Informe nome, preço válido e duração de 5 a 600 minutos.");
           return;
         }
         update((d) => ({
           ...d,
           services: d.services.map((s) =>
-            s.id === draft.id ? { ...draft, name: draft.name.trim() } : s,
+            s.id === service.id ? updateBarberService(s, barberId, {
+              name: draft.name.trim(), price: draft.price,
+              duration: draft.duration, active: draft.active,
+            }) : s,
           ),
         }));
-        toast("Serviço atualizado.");
+        setDrafts((current) => {
+          const next = { ...current };
+          delete next[barberId];
+          return next;
+        });
+        setError("");
+        toast(`Serviço de ${barberName} atualizado.`);
       }}
     >
       <label>
-        Nome
+        Nome para {barberName}
         <input
           value={draft.name}
           required
@@ -592,9 +632,10 @@ function ServiceEditor({ service }: { service: Service }) {
           type="number"
           min="0"
           step="0.01"
-          value={draft.price}
+          required
+          value={Number.isFinite(draft.price) ? draft.price : ""}
           onChange={(e) =>
-            setDraft({ ...draft, price: Number(e.target.value) })
+            setDraft({ ...draft, price: e.target.valueAsNumber })
           }
         />
       </label>
@@ -604,9 +645,11 @@ function ServiceEditor({ service }: { service: Service }) {
           type="number"
           min="5"
           max="600"
-          value={draft.duration}
+          step="1"
+          required
+          value={Number.isFinite(draft.duration) ? draft.duration : ""}
           onChange={(e) =>
-            setDraft({ ...draft, duration: Number(e.target.value) })
+            setDraft({ ...draft, duration: e.target.valueAsNumber })
           }
         />
       </label>
@@ -616,9 +659,11 @@ function ServiceEditor({ service }: { service: Service }) {
           checked={draft.active}
           onChange={(e) => setDraft({ ...draft, active: e.target.checked })}
         />{" "}
-        Ativo
+        Ativo para {barberName}
       </label>
-      <button className="button outline">Salvar serviço</button>
+      <button className="button outline">Salvar {barberName}</button>
+      {drafts[barberId] && <small className="service-editor-hint">Alterações não salvas para {barberName}.</small>}
+      {error && <p className="error service-editor-hint" role="alert">{error}</p>}
     </form>
   );
 }

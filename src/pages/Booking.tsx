@@ -1,5 +1,6 @@
-import { useEffect, useState, type FormEvent } from "react";
-import { config, servicePrice } from "../config";
+import { useEffect, useMemo, useState, type FormEvent } from "react";
+import { config } from "../config";
+import { serviceForBarber } from "../lib/services";
 import { addDays, dateLabel, money, nowClock, time } from "../lib/dates";
 import { availableSlots } from "../lib/availability";
 import { maskPhone, validPhone, whatsapp } from "../lib/whatsapp";
@@ -23,8 +24,9 @@ export function Booking({
     "";
   const [serviceId, setServiceId] = useState(preselected);
   const preselectedBarber = new URLSearchParams(location.hash.split("?")[1]).get("barbeiro");
+  const initialBarber = existing?.barberId ?? preselectedBarber;
   const [barberId, setBarberId] = useState(
-    existing?.barberId ?? preselectedBarber ?? config.barbers[0].id,
+    config.barbers.find((barber) => barber.id === initialBarber)?.id ?? config.barbers[0].id,
   );
   const [step, setStep] = useState(preselected ? 1 : 0);
   const [date, setDate] = useState(existing?.date ?? "");
@@ -39,7 +41,17 @@ export function Booking({
     const id = setInterval(() => setNow(nowClock()), 30000);
     return () => clearInterval(id);
   }, []);
-  const service = data.services.find((s) => s.id === serviceId && s.active);
+  const services = useMemo(
+    () => data.services.map((item) => serviceForBarber(item, barberId)),
+    [data.services, barberId],
+  );
+  const service = services.find((s) => s.id === serviceId && s.active);
+  function changeBarber(id: string) {
+    setBarberId(id);
+    setDate("");
+    setStart(null);
+    setError("");
+  }
   const dates = Array.from({ length: config.windowDays }, (_, i) =>
     addDays(now.date, i),
   );
@@ -83,7 +95,7 @@ export function Booking({
       date,
       start,
       duration: service.duration,
-      price: servicePrice(service, barberId),
+      price: service.price,
       name: name.trim(),
       phone: phone.replace(/\D/g, ""),
       status: "confirmed",
@@ -209,7 +221,7 @@ export function Booking({
       {service && step > 0 && (
         <div className="selection-summary">
           <span>
-            {service.name} · {service.duration} min · {money(servicePrice(service, barberId))}
+            {config.barbers.find((barber) => barber.id === barberId)?.name} · {service.name} · {service.duration} min · {money(service.price)}
           </span>
           <button onClick={() => setStep(0)}>Alterar serviço</button>
         </div>
@@ -224,9 +236,9 @@ export function Booking({
           <>
             <h2>Qual é o seu ritual?</h2>
             <p className="muted">Escolha primeiro o barbeiro para ver o valor correto.</p>
-            <div className="barber-picker" aria-label="Escolha o barbeiro">{config.barbers.map((barber) => <button type="button" className={`barber-option ${barberId === barber.id ? "selected" : ""}`} key={barber.id} onClick={() => setBarberId(barber.id)}><span>{barber.name}</span><small>Selecionar</small></button>)}</div>
+            <div className="barber-picker" role="group" aria-label="Escolha o barbeiro">{config.barbers.map((barber) => <button type="button" aria-pressed={barberId === barber.id} className={`barber-option ${barberId === barber.id ? "selected" : ""}`} key={barber.id} onClick={() => changeBarber(barber.id)}><span>{barber.name}</span><small>Selecionar</small></button>)}</div>
             <div className="booking-services">
-              {data.services
+              {services
                 .filter((s) => s.active)
                 .map((s) => (
                   <button
@@ -265,7 +277,7 @@ export function Booking({
                 Profissional
                 <select
                   value={barberId}
-                  onChange={(e) => setBarberId(e.target.value)}
+                  onChange={(e) => changeBarber(e.target.value)}
                 >
                   {config.barbers.map((b) => (
                     <option value={b.id} key={b.id}>
@@ -349,7 +361,7 @@ export function Booking({
             <div className="booking-summary">
               <strong>{service.name}</strong>
               <p>
-                {dateLabel(date)} · {time(start)} · {money(servicePrice(service, barberId))}
+                {config.barbers.find((barber) => barber.id === barberId)?.name} · {dateLabel(date)} · {time(start)} · {service.duration} min · {money(service.price)}
               </p>
             </div>
             <form onSubmit={submit} noValidate>

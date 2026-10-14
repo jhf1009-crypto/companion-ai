@@ -1,9 +1,16 @@
+export type ServiceSettings = {
+  name: string;
+  price: number;
+  duration: number;
+  active: boolean;
+};
 export type Service = {
   id: string;
   name: string;
   description: string;
   price: number;
   priceByBarber?: Record<string, number>;
+  barberSettings?: Record<string, ServiceSettings>;
   duration: number;
   active: boolean;
   featured?: boolean;

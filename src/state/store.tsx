@@ -18,7 +18,8 @@ import {
 import { seed } from "../lib/seed";
 import { isAvailable } from "../lib/availability";
 import { nowClock } from "../lib/dates";
-import { servicePrice } from "../config";
+import { config } from "../config";
+import { serviceForBarber } from "../lib/services";
 import { validPhone } from "../lib/whatsapp";
 const Context = createContext<Store | null>(null);
 type Store = {
@@ -104,11 +105,12 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   async function book(a: Appointment, excludeId?: string): Promise<boolean> {
     const commit = () => {
       const latest = readData();
-      const service = latest.services.find(
-        (s) => s.id === a.serviceId && s.active,
-      );
+      const baseService = latest.services.find((s) => s.id === a.serviceId);
+      const service = baseService && serviceForBarber(baseService, a.barberId);
       if (
         !service ||
+        !service.active ||
+        !config.barbers.some((barber) => barber.id === a.barberId) ||
         a.name.trim().length < 2 ||
         !validPhone(a.phone) ||
         !isAvailable(
@@ -129,7 +131,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
           {
             ...a,
             serviceName: service.name,
-            price: servicePrice(service, a.barberId),
+            price: service.price,
             duration: service.duration,
           },
         ],

@@ -1,4 +1,5 @@
-import { config, servicePrice } from "../config";
+import { config } from "../config";
+import { serviceForBarber } from "../lib/services";
 import { money, time } from "../lib/dates";
 import { whatsapp } from "../lib/whatsapp";
 import { useStore } from "../state/store";
@@ -64,7 +65,7 @@ export function Home() {
         </div>
         <div className="service-grid">
           {data.services
-            .filter((s) => s.active)
+            .filter((s) => config.barbers.some((barber) => serviceForBarber(s, barber.id).active))
             .map((s) => (
               <article
                 className={`service-card ${s.featured ? "featured" : ""}`}
@@ -81,8 +82,24 @@ export function Home() {
                 <h3>{s.name}</h3>
                 <p>{s.description}</p>
                 <div className="service-meta">
-                  <div className="service-prices" aria-label={`Escolha o barbeiro para ${s.name}`}><a className="service-price-card" href={`#/agendar?servico=${s.id}&barbeiro=luiz`}><span>Luiz</span><strong>{money(servicePrice(s, "luiz"))}</strong><small>Escolher ↗</small></a><a className="service-price-card" href={`#/agendar?servico=${s.id}&barbeiro=enzo`}><span>Enzo</span><strong>{money(servicePrice(s, "enzo"))}</strong><small>Escolher ↗</small></a></div>
-                  <span>{s.duration} min</span>
+                  <div className="service-prices" aria-label={`Escolha o barbeiro para ${s.name}`}>
+                    {config.barbers.map((barber) => {
+                      const offer = serviceForBarber(s, barber.id);
+                      return offer.active ? (
+                        <a
+                          className="service-price-card"
+                          key={barber.id}
+                          href={`#/agendar?servico=${s.id}&barbeiro=${barber.id}`}
+                          aria-label={`Agendar ${offer.name} com ${barber.name}, ${money(offer.price)}, ${offer.duration} minutos`}
+                        >
+                          <span>{barber.name}</span>
+                          {offer.name !== s.name && <small>{offer.name}</small>}
+                          <strong>{money(offer.price)}</strong>
+                          <small>{offer.duration} min · Escolher ↗</small>
+                        </a>
+                      ) : null;
+                    })}
+                  </div>
                 </div>
               </article>
             ))}

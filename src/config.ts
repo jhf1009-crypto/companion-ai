@@ -1,7 +1,8 @@
 import type { Service, Hours } from "./types";
+import { serviceForBarber } from "./lib/services";
 
 export function servicePrice(service: Service, barberId: string) {
-  return service.priceByBarber?.[barberId] ?? service.price;
+  return serviceForBarber(service, barberId).price;
 }
 export const config = {
   name: "Barbearia do Enzo",

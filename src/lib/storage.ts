@@ -20,7 +20,23 @@ export function validData(value: unknown): value is Data {
         s.price >= 0 &&
         Number.isFinite(s.duration) &&
         s.duration > 0 &&
-        typeof s.active === "boolean",
+        typeof s.active === "boolean" &&
+        (s.priceByBarber === undefined || (
+          !!s.priceByBarber && typeof s.priceByBarber === "object" &&
+          !Array.isArray(s.priceByBarber) &&
+          Object.values(s.priceByBarber).every((price) => Number.isFinite(price) && price >= 0)
+        )) &&
+        (s.barberSettings === undefined || (
+          !!s.barberSettings && typeof s.barberSettings === "object" &&
+          !Array.isArray(s.barberSettings) &&
+          Object.values(s.barberSettings).every((settings) =>
+            !!settings && typeof settings === "object" &&
+            typeof settings.name === "string" && !!settings.name.trim() &&
+            Number.isFinite(settings.price) && settings.price >= 0 &&
+            Number.isInteger(settings.duration) && settings.duration >= 5 && settings.duration <= 600 &&
+            typeof settings.active === "boolean",
+          )
+        )),
     ) &&
     Array.isArray(d.appointments) &&
     d.appointments.every(
