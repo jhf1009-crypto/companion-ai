@@ -119,7 +119,7 @@ export function Home() {
           <div className="map-art">
             <span className="map-pin">✂︎</span>
             <strong>{config.name}</strong>
-            <small>Mapa ilustrativo · endereço de demonstração</small>
+            <small>Localização da barbearia</small>
             <a
               className="button primary"
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(config.address + ", " + config.city)}`}
@@ -188,4 +188,3 @@ export function Home() {
     </>
   );
 }
-

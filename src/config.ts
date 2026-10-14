@@ -10,8 +10,8 @@ export const config = {
   slogan: "Seu estilo, nossa paixão.",
   description:
     "Mais que um corte, uma experiência. Estilo, atitude e qualidade em cada detalhe.",
-  address: "Rua das Estrelas, 123",
-  city: "São Paulo – SP",
+  address: "Rua Nelson V. de Brito, 315 · Quadra 20, Lote 06 · Setor dos Funcionários",
+  city: "Posse – GO, Brasil",
   whatsapp: "5562998159719",
   instagram: "barbeariadoenzo",
   timezone: "America/Bahia",
