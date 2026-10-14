@@ -1,6 +1,6 @@
 import type { Data } from "../types";
 import { seed } from "./seed";
-export const STORAGE_KEY = "barbearia-demo-v1";
+export const STORAGE_KEY = "barbearia-demo-v2";
 let memory: Data | undefined;
 let failed = false;
 export function storageFailed(): boolean {
