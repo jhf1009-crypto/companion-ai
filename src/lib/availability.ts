@@ -20,6 +20,7 @@ export function isAvailable(
 ): boolean {
   if (
     !/^\d{4}-\d{2}-\d{2}$/.test(date) ||
+    addDays(date, 0) !== date ||
     !Number.isInteger(start) ||
     !Number.isFinite(duration) ||
     duration <= 0
@@ -67,11 +68,16 @@ export function availableSlots(
   now: Clock,
   excludeId?: string,
 ): number[] {
+  return scheduleSlots(data, date, duration).filter((start) =>
+    isAvailable(data, date, start, duration, barberId, now, excludeId),
+  );
+}
+
+export function scheduleSlots(data: Data, date: string, duration: number): number[] {
   const h = data.hours[weekday(date)];
-  if (!h || h.closed) return [];
+  if (!h || h.closed || !Number.isFinite(duration) || duration <= 0) return [];
   const slots: number[] = [];
   for (let start = h.open; start + duration <= h.close; start += config.step)
-    if (isAvailable(data, date, start, duration, barberId, now, excludeId))
-      slots.push(start);
+    slots.push(start);
   return slots;
 }

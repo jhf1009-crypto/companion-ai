@@ -16,6 +16,7 @@ import { Booking } from "./Booking";
 import { serviceForBarber, updateBarberService } from "../lib/services";
 import type { Appointment, Service, ServiceSettings } from "../types";
 const statuses = {
+  pending: "Aguardando confirmação",
   confirmed: "Confirmado",
   completed: "Concluído",
   cancelled: "Cancelado",
@@ -376,6 +377,12 @@ export function Admin() {
                       </span>
                     </div>
                     <div className="appointment-actions">
+                      {a.status === "pending" && (
+                        <>
+                          <button onClick={() => status(a, "confirmed")}>Confirmar horário</button>
+                          <button className="danger" onClick={() => status(a, "cancelled")}>Cancelar</button>
+                        </>
+                      )}
                       {a.status === "confirmed" && (
                         <>
                           <button onClick={() => status(a, "completed")}>

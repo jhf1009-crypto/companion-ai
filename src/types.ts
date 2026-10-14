@@ -28,7 +28,7 @@ export type Appointment = {
   price: number;
   name: string;
   phone: string;
-  status: "confirmed" | "completed" | "cancelled" | "absent";
+  status: "pending" | "confirmed" | "completed" | "cancelled" | "absent";
   source: "client" | "manual" | "seed";
   created: number;
 };

@@ -10,7 +10,9 @@ export function Home() {
       <section className="hero">
         <img
           className="hero-art"
-          src={`${import.meta.env.BASE_URL}images/hero-photo.png`}
+          src={`${import.meta.env.BASE_URL}images/hero-photo.webp`}
+          fetchPriority="high"
+          decoding="async"
           alt="Ilustração de uma cadeira de barbeiro sob luzes douradas"
         />
         <div className="hero-shade" />

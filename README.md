@@ -1,5 +1,25 @@
 # Barbearia do Enzo — demonstração de agendamento
 
+## Destino e confirmação dos agendamentos
+
+O fluxo público prepara uma solicitação com status `pending` neste navegador.
+Na tela final, **Enviar solicitação no WhatsApp** abre `wa.me/5562998159719`
+com cliente, telefone, serviço, barbeiro, data, horário, duração, valor e referência.
+O cliente precisa enviar a mensagem no WhatsApp; abrir o link não comprova entrega.
+O horário só é confirmado quando a barbearia responde. O site não declara uma
+reserva confirmada nem envia notificações automáticas sem integração de servidor.
+
+O painel pode confirmar a solicitação local ou criar uma reserva manual. O bloqueio
+de horários e a proteção por Web Locks funcionam no mesmo navegador/origem;
+disponibilidade e alterações entre aparelhos exigem backend compartilhado.
+Os dados fictícios com `source: "seed"` das versões antigas são ignorados sem
+apagar solicitações, reservas manuais ou tabelas de serviços editadas.
+
+As imagens otimizadas, os favicons e a imagem OG estão em `public/`. Para
+regenerá-los: `node build/prepare-assets.mjs [path-to-sharp]`. Esse script não é
+executado no navegador nem no deploy. A Vercel serve `404.html` com status 404
+em caminhos inexistentes; as rotas válidas da aplicação continuam usando hash.
+
 ## Edição individual de serviços
 
 Em `#/gestao`, abra **Serviços** e selecione **Luiz** ou **Enzo**. Nome,

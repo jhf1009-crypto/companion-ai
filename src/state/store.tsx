@@ -105,6 +105,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   async function book(a: Appointment, excludeId?: string): Promise<boolean> {
     const commit = () => {
       const latest = readData();
+      // Retrying the same request must not create another appointment.
+      if (!excludeId && latest.appointments.some((item) => item.id === a.id)) return true;
       const baseService = latest.services.find((s) => s.id === a.serviceId);
       const service = baseService && serviceForBarber(baseService, a.barberId);
       if (

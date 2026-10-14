@@ -1,10 +1,8 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": ".output/public",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/404.html", "status": 404 }
   ]
 }

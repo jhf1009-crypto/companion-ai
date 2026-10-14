@@ -6,6 +6,7 @@ export function servicePrice(service: Service, barberId: string) {
 }
 export const config = {
   name: "Barbearia do Enzo",
+  siteUrl: "https://barbeariaexemplo-ivory.vercel.app/",
   slogan: "Seu estilo, nossa paixão.",
   description:
     "Mais que um corte, uma experiência. Estilo, atitude e qualidade em cada detalhe.",

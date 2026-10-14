@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Home } from "./pages/Home";
 import { Booking } from "./pages/Booking";
 import { Admin } from "./pages/Admin";
+import { NotFound } from "./pages/NotFound";
 import { useStore } from "./state/store";
 import { config } from "./config";
 export function App() {
@@ -28,24 +29,21 @@ export function App() {
       name: config.name,
       description: config.description,
       telephone: "+" + config.whatsapp,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: config.address,
-        addressLocality: config.city,
-      },
+      url: config.siteUrl,
       priceRange: "R$",
     });
     document.head.appendChild(script);
     return () => script.remove();
   }, []);
   const path = route.split("?")[0];
+  const homeRoute = ["#/", "#servicos", "#localizacao"].includes(path);
   return (
     <>
       <header className="site-header">
         <a className="brand" href="#/" aria-label={`${config.name} — início`}>
           <img
             className="brand-symbol logo-image"
-            src={`${import.meta.env.BASE_URL}images/image.png`}
+            src={`${import.meta.env.BASE_URL}images/logo.webp`}
             alt="Logo Barbearia do Enzo"
           />
           <span>
@@ -66,13 +64,13 @@ export function App() {
           Não feche a página.
         </p>
       )}
-      {path === "#/gestao" ? <Admin /> : path === "#/agendar" ? <Booking key={route} /> : <Home />}
+      {location.pathname !== "/" && location.pathname !== "/index.html" ? <NotFound /> : path === "#/gestao" ? <Admin /> : path === "#/agendar" ? <Booking key={route} /> : homeRoute ? <Home /> : <NotFound />}
       <footer className="site-footer">
         <div className="container">
           <a className="brand" href="#/">
             <img
               className="brand-symbol logo-image"
-              src={`${import.meta.env.BASE_URL}images/image.png`}
+              src={`${import.meta.env.BASE_URL}images/logo.webp`}
               alt="Logo Barbearia do Enzo"
             />
             <span>
