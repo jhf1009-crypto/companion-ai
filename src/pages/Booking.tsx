@@ -223,6 +223,8 @@ export function Booking({
         {step === 0 && (
           <>
             <h2>Qual é o seu ritual?</h2>
+            <p className="muted">Escolha primeiro o barbeiro para ver o valor correto.</p>
+            <div className="barber-picker" aria-label="Escolha o barbeiro">{config.barbers.map((barber) => <button type="button" className={`barber-option ${barberId === barber.id ? "selected" : ""}`} key={barber.id} onClick={() => setBarberId(barber.id)}><span>{barber.name}</span><small>Selecionar</small></button>)}</div>
             <div className="booking-services">
               {data.services
                 .filter((s) => s.active)
@@ -347,7 +349,7 @@ export function Booking({
             <div className="booking-summary">
               <strong>{service.name}</strong>
               <p>
-                {dateLabel(date)} · {time(start)} · {money(service.price)}
+                {dateLabel(date)} · {time(start)} · {money(servicePrice(service, barberId))}
               </p>
             </div>
             <form onSubmit={submit} noValidate>
