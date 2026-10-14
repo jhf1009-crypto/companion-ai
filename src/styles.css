@@ -355,12 +355,12 @@ small {
 }
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
 }
 .service-card {
   position: relative;
-  padding: 32px 28px;
+  padding: 36px 32px;
   border: 1px solid var(--border);
   background: #f5f5f2;
   color: #111111;
@@ -387,12 +387,12 @@ small {
 .service-card h3 {
   margin-bottom: 12px;
   font-family: var(--serif);
-  font-size: 25px;
+  font-size: 28px;
 }
 .service-card p {
   color: #5f5f5a;
   font-size: 13px;
-  min-height: 66px;
+  min-height: 72px;
 }
 .tag {
   position: absolute;
@@ -414,14 +414,14 @@ small {
 .service-prices {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  gap: 14px;
   margin-top: auto;
 }
 .service-price-card {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 10px 12px;
+  padding: 14px 16px;
   border: 1px solid #ffffff16;
   background: #ecece8;
   border-color: #1111111f;
@@ -436,13 +436,13 @@ small {
 }
 .service-price-card strong {
   color: var(--accent);
-  font-size: 19px;
+  font-size: 24px;
   font-weight: 500;
 }
 .service-price-card small {
   color: var(--muted);
-  font-size: 10px;
-  margin-top: 2px;
+  font-size: 11px;
+  margin-top: 4px;
 }
 .service-price-card:hover {
   border-color: var(--accent);
