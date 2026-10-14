@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import { Home } from "./pages/Home";
 import { Booking } from "./pages/Booking";
-import { Admin } from "./pages/Admin";
 import { useStore } from "./state/store";
 import { config } from "./config";
 export function App() {
   const [route, setRoute] = useState(location.hash || "#/");
-  const { reset, notice, memoryOnly } = useStore();
-  const [resetOpen, setResetOpen] = useState(false);
+  const { notice, memoryOnly } = useStore();
   useEffect(() => {
     const handler = () => {
       setRoute(location.hash || "#/");
@@ -42,17 +40,6 @@ export function App() {
   const path = route.split("?")[0];
   return (
     <>
-      <div className="demo-bar">
-        <span>
-          <b>DEMO</b> Seu próximo corte, sem fila.
-        </span>
-        <div>
-          <a href="#/admin">Abrir painel do barbeiro ↗</a>
-          <button onClick={() => setResetOpen(true)}>
-            Resetar dados de demonstração
-          </button>
-        </div>
-      </div>
       <header className="site-header">
         <a className="brand" href="#/" aria-label={`${config.name} — início`}>
           <img
@@ -70,9 +57,6 @@ export function App() {
         <nav aria-label="Navegação principal">
           <a href="#/">O espaço</a>
           <a href="#/agendar">Agendar</a>
-          <a className="header-admin" href="#/admin">
-            Painel ↗
-          </a>
         </nav>
       </header>
       {memoryOnly && (
@@ -81,13 +65,7 @@ export function App() {
           Não feche a página.
         </p>
       )}
-      {path === "#/admin" ? (
-        <Admin />
-      ) : path === "#/agendar" ? (
-        <Booking key={route} />
-      ) : (
-        <Home />
-      )}
+      {path === "#/agendar" ? <Booking key={route} /> : <Home />}
       <footer className="site-footer">
         <div className="container">
           <a className="brand" href="#/">
@@ -105,7 +83,6 @@ export function App() {
           </a>
           <p>{config.slogan}</p>
           <small>Versão de demonstração – dados fictícios</small>
-          <a href="#/admin">Painel do barbeiro ↗</a>
         </div>
       </footer>
       {notice && (
