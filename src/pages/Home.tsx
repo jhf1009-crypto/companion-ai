@@ -25,7 +25,7 @@ export function Home() {
             Um corte à altura de quem você é.
           </p>
           <div className="actions">
-            <a className="button primary" href="#/agendar">
+            <a className="button primary" href="#servicos">
               Agendar horário <span aria-hidden="true">↗</span>
             </a>
             <a
@@ -162,7 +162,7 @@ export function Home() {
         </div>
       </section>
       <div className="mobile-book">
-        <a className="button primary" href="#/agendar">
+        <a className="button primary" href="#servicos">
           Agendar horário ↗
         </a>
       </div>
