@@ -82,61 +82,11 @@ export function App() {
             </span>
           </a>
           <p>{config.slogan}</p>
-          <small>Versão de demonstração – dados fictícios</small>
         </div>
       </footer>
       {notice && (
         <div className="toast" role="status">
           ✓ {notice}
-        </div>
-      )}
-      {resetOpen && (
-        <div className="modal-backdrop">
-          <section
-            className="reset-dialog"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="reset-title"
-            onKeyDown={(event) => {
-              if (event.key === "Escape") setResetOpen(false);
-              if (event.key === "Tab") {
-                const buttons = event.currentTarget.querySelectorAll("button");
-                const first = buttons[0],
-                  last = buttons[buttons.length - 1];
-                if (event.shiftKey && document.activeElement === first) {
-                  event.preventDefault();
-                  last.focus();
-                } else if (!event.shiftKey && document.activeElement === last) {
-                  event.preventDefault();
-                  first.focus();
-                }
-              }
-            }}
-          >
-            <h2 id="reset-title">Começar de novo?</h2>
-            <p>
-              Isso apaga as reservas e alterações locais e restaura os dados de
-              demonstração.
-            </p>
-            <div className="actions">
-              <button
-                className="button outline"
-                autoFocus
-                onClick={() => setResetOpen(false)}
-              >
-                Manter dados
-              </button>
-              <button
-                className="button primary"
-                onClick={() => {
-                  reset();
-                  setResetOpen(false);
-                }}
-              >
-                Resetar demonstração
-              </button>
-            </div>
-          </section>
         </div>
       )}
     </>
