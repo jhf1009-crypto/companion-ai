@@ -9,7 +9,7 @@ export function App() {
   useEffect(() => {
     const handler = () => {
       setRoute(location.hash || "#/");
-      window.scrollTo(0, 0);
+      if (location.hash.startsWith("#/")) window.scrollTo(0, 0);
     };
     window.addEventListener("hashchange", handler);
     return () => window.removeEventListener("hashchange", handler);
