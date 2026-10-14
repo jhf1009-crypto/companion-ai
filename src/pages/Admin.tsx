@@ -359,15 +359,18 @@ export function Admin() {
                       <strong>{time(a.start)}</strong>
                       <small>até {time(a.start + a.duration)}</small>
                     </div>
+                    <div className="appointment-barber">
+                      <span>Barbeiro</span>
+                      <strong>
+                        {config.barbers.find((b) => b.id === a.barberId)?.name ?? "Não identificado"}
+                      </strong>
+                    </div>
                     <div className="appointment-info">
                       <h3>{a.name}</h3>
                       <p>
                         {a.serviceName} · {money(a.price)}
                       </p>
-                      <small>
-                        {a.phone} ·{" "}
-                        {config.barbers.find((b) => b.id === a.barberId)?.name}
-                      </small>
+                      <small>{a.phone}</small>
                       <span className={`status status-${a.status}`}>
                         {statuses[a.status]}
                       </span>

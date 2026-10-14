@@ -1066,6 +1066,30 @@ select:focus {
   flex: 1;
   min-width: 0;
 }
+.appointment-barber {
+  flex: 0 0 116px;
+  align-self: center;
+  padding: 12px 14px;
+  border: 1px solid #c6a15b50;
+  border-radius: 4px;
+  background: #c6a15b12;
+}
+.appointment-barber span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.appointment-barber strong {
+  display: block;
+  color: var(--accent);
+  font-size: 21px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
 .appointment-info h3 {
   font-size: 16px;
   margin: 0 0 6px;
@@ -1611,6 +1635,12 @@ select:focus {
   }
   .appointment-time {
     flex-basis: 70px;
+  }
+  .appointment-barber {
+    flex: 1 0 calc(100% - 86px);
+  }
+  .appointment-info {
+    flex-basis: 100%;
   }
   .appointment-time strong {
     font-size: 20px;
